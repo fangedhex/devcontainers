@@ -1,21 +1,27 @@
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+export ZSH="$HOME/.oh-my-zsh"
 
-setopt promptsubst
-zinit ice wait'!0'
+# Setup vars for Oh-My-Zsh
+ZSH_THEME="robbyrussell"
+DISABLE_AUTO_UPDATE="true"
+DISABLE_UPDATE_PROMPT="true"
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-syntax-highlighting
+# Setup Oh-My-Zsh plugins
+plugins=(
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  git
+  git-extras
+  git-flow
+)
 
-zinit snippet OMZ::plugins/git/git.plugin.zsh
+# We load Oh-My-Zsh
+autoload -U compinit && compinit
+source $ZSH/oh-my-zsh.sh
 
-zinit light denysdovhan/spaceship-prompt
-export SPACESHIP_PROMPT_ADD_NEWLINE=false
-export SPACESHIP_PROMPT_SEPARATE_LINE=false
-export SPACESHIP_USER_SHOW=false
-
+# We load every script inside our config directory
 CONFIG_DIR="$HOME/.zshrc.d"
 if [[ -d "$CONFIG_DIR" ]]
 then
