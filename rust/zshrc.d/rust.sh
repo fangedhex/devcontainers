@@ -1,0 +1,1 @@
+plugins+=(rustup rust cargo)
