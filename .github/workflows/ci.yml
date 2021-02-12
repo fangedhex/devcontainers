@@ -43,3 +43,11 @@ jobs:
           push: true
           tags: |
             fangedhex/devcontainers:node
+      - name: Build java
+        uses: docker/build-push-action@v2
+        with:
+          context: java
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7
+          push: true
+          tags: |
+            fangedhex/devcontainers:java
