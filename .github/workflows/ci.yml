@@ -35,3 +35,11 @@ jobs:
           push: true
           tags: |
             fangedhex/devcontainers:rust
+      - name: Build node
+        uses: docker/build-push-action@v2
+        with:
+          context: node
+          platforms: linux/amd64
+          push: true
+          tags: |
+            fangedhex/devcontainers:node
